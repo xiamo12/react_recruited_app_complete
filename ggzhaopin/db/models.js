@@ -14,7 +14,8 @@
 	// 引入mongoose
 	const mongoose = require("mongoose");
 	// 连接指定数据库（url只有数据库是变化的）
-	mongoose.connect("mongodb://localhost:27017/gzhipin2", { useNewUrlParser: true }) 
+	mongoose.connect("mongodb://0.0.0.0:27017/gzhipin2", { useNewUrlParser: true }) //表示当前项目使用的mongodb数据库名称是gzhipin2
+	// mongoose.connect("bds249082242.my3w.com", { useNewUrlParser: true });
 	// 获取连接对象
 	const conn = mongoose.connection;
 	// 绑定完成的监听【用来提示连接成功】
@@ -35,11 +36,12 @@
 	})
 	// 定义Model【与集合对应，可以操作集合】
 	const UserModel = mongoose.model('user',userSchema); //文档为user，集合为users
+	//UserModel 描述名为user的文档，此文档的每一项都基于userSchema结构定义数据模型
 	// 向外暴露Model。
 	//暴露方式：module.exports = xxx : 合并暴露，只暴露一次
 			//exports.xxx = value 
 			//exports.xxx = value  ：这种形式可以一次次向外暴露。此处用分别暴露
-	exports.UserModel = UserModel;
+	exports.UserModel = UserModel; //UserModel是一个函数
 
 
 
